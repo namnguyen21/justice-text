@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -7,4 +7,49 @@
   margin: auto;
   overflow-wrap: break-word;
   padding: 20px 0;
+} */
+
+.App {
+  text-align: center;
+  padding: 0 200px;
+}
+
+.App p {
+  margin: auto;
+  overflow-wrap: break-word;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.heading {
+  color: #6320ee;
+  /* font-family: "Montserrat", sans-serif; */
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.searchbar {
+  background-color: rgba(99, 32, 238, 0.3);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 30px;
+  border: solid 1px rgba(99, 32, 238, 0.3);
+}
+
+.searchbar:focus-within {
+  border: solid 1px #6320ee;
+}
+
+
+.input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #fff;
+  background: transparent;
+}
+
+.input::placeholder {
+  color: #fff;
 }
