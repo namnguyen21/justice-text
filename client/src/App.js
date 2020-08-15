@@ -5,6 +5,8 @@ import Nav from "./Nav/Nav";
 import Row from "./Row/Row";
 import "./App.css";
 
+/* My approach was primarily on the front-end. In order to speed up initial loading times -  I implemented infinite scrolling and lazy loaded the text components. Each paragraph is its own component that will only render when visible -- this increased Google Lighthouse Performance from 35 -> 63. The infinite scrolling allows for only a certain amount of querying at a time - I set it to 5. When user scrolls to bottom, an addition 5 paragraphs will be fetched. This was to cut down the amount of api calls at the very beginning (originally 90) -- this increased Google Lighthouse Performance from 63 -> 79 . Another idea - that would've broken a rule set - was to group together api calls for each paragraph into one call. */
+
 const DATA_SIZE_HALF = "half";
 const DATA_SIZE_FULL = "full";
 const INTERVAL_TIME = 2000;
