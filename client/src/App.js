@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BottomScrollListener from "react-bottom-scroll-listener";
 
+import Nav from "./Nav/Nav";
 import Row from "./Row/Row";
 import "./App.css";
 
-const DATA_SIZE_HALF = "half"
+const DATA_SIZE_HALF = "half";
 const DATA_SIZE_FULL = "full";
 const INTERVAL_TIME = 2000;
 
@@ -76,15 +77,18 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="heading">JusticeText Online Book</h2>
-      <div className="searchbar">
-        <input
-          className="input"
-          type="text"
-          placeholder="Search text"
-          value={searchInput}
-          onChange={handleChange}
-        />
+      <Nav />
+      <div className="heading-container">
+        <h2 className="heading">JusticeText Online Book</h2>
+        <div className="searchbar">
+          <input
+            className="input"
+            type="text"
+            placeholder="Search text"
+            value={searchInput}
+            onChange={handleChange}
+          />
+        </div>
       </div>
       {data.map((row, i) => {
         return (
