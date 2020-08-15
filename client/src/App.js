@@ -15,12 +15,14 @@ const INFINITE_SCROLL_INCREMENTER = 5;
 /** Application entry point */
 function App() {
   const [data, setData] = useState([]);
+
+  // store entire list of fetched id's for further querying
   const [ids, setIds] = useState([]);
 
   const [value, setValue] = useState(0);
   const [searchInput, setSearchInput] = useState("");
 
-  // we can use lower and upper limits to implement infinite scrolling - 2 items at a time
+  // we can use lower and upper limits to implement infinite scrolling - 5 items at a time
   const [lower, setLower] = useState(0);
   const [upper, setUpper] = useState(5);
 
@@ -34,6 +36,7 @@ function App() {
   /** DO NOT CHANGE THE FUNCTION ABOVE */
 
   useEffect(() => {
+    // get list of ids and store to id state
     const fetchIds = async () => {
       let response = await fetch("/api/dataIdList?datasize=" + DATA_SIZE_FULL);
       // this will return a list of ids
@@ -46,6 +49,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // ensure that ids has been stored
       if (ids.length) {
         // get range of id's from lower to upper limit
         let currentItems = [...ids].slice(lower, upper);
@@ -57,7 +61,7 @@ function App() {
           })
         );
 
-        // need to use concat or else screen will be stuck at scroll bottom and endlessly render
+        // need to use concat or else screen will be stuck at scroll bottom and endlessly re-render
         setData((data) => data.concat(dataItems));
       }
     };
@@ -68,7 +72,8 @@ function App() {
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   };
-  // callback to be used when scroll bottom is hit
+
+  // callback to be used when scroll bottom is hit - we will increment the ids of posts that we should query next
   const onBottom = () => {
     let temp = upper;
     setUpper((upper) => (upper += INFINITE_SCROLL_INCREMENTER));

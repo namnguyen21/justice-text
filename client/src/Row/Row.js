@@ -4,6 +4,7 @@ import TrackVisibility from "react-on-screen";
 import TextItem from "../TextItem/TextItem";
 
 const TextRow = ({ isVisible, row, value, searchInput }) => {
+  // only render the text if component is visible
   if (isVisible) {
     return (
       <p className="row">
@@ -26,6 +27,7 @@ const TextRow = ({ isVisible, row, value, searchInput }) => {
 // track whether or not the component is visible
 export default function Row({ row, value, searchInput }) {
   return (
+    // we only need to track the visibility once - otherwise it will unrender when out of view
     <TrackVisibility once>
       <TextRow row={row} value={value} searchInput={searchInput} />
     </TrackVisibility>
