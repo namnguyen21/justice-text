@@ -4,7 +4,7 @@ import BottomScrollListener from "react-bottom-scroll-listener";
 import Row from "./Row/Row";
 import "./App.css";
 
-// const DATA_SIZE_HALF = "half"
+const DATA_SIZE_HALF = "half"
 const DATA_SIZE_FULL = "full";
 const INTERVAL_TIME = 2000;
 
